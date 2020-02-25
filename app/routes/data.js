@@ -1,17 +1,9 @@
 import Route from '@ember/routing/route';
-import { inject } from '@ember/service';
 import benchmark from '../decorators/benchmark';
+import authenticated from '../decorators/authenticated';
 
+@authenticated
 export default class DataRoute extends Route {
-  @inject
-  session;
-
-  beforeModel() {
-    if (!this.session.loggedIn) {
-      this.transitionTo('index');
-    }
-  }
-
   @benchmark('/data – model')
   async model() {
     return new Promise(function(resolve) {
