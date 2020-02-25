@@ -1,4 +1,10 @@
 <LinkTo @route="index">Home</LinkTo>
 <LinkTo @route="data">Show me the data</LinkTo>
 
+{{#if this.session.loggedIn}}
+  <button {{on 'click' this.logout}} type="button">Logout</button>
+{{else}}
+  <button {{on 'click' this.login}} type="button">Login</button>
+{{/if}}
+
 {{outlet}}
